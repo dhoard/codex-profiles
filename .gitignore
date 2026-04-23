@@ -1,0 +1,15 @@
+.idea
+.codex
+auth.json
+history.jsonl
+installation_id
+version.json
+log/
+sessions/
+shell_snapshots/
+cache/
+.tmp/
+tmp/
+state_*.sqlite*
+logs_*.sqlite*
+*.backup

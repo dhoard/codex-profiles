@@ -1,0 +1,533 @@
+{
+  "models": [
+    {
+      "slug": "gpt-5.4",
+      "display_name": "gpt-5.4",
+      "description": "Best intelligence at scale for agentic, coding, and professional workflows.",
+      "default_reasoning_level": "medium",
+      "supported_reasoning_levels": [
+        {
+          "effort": "low",
+          "description": "Balances speed with some reasoning; useful for straightforward queries and short explanations"
+        },
+        {
+          "effort": "medium",
+          "description": "Provides a solid balance of reasoning depth and latency for general-purpose tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Maximizes reasoning depth for complex or ambiguous problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning for complex problems"
+        }
+      ],
+      "shell_type": "shell_command",
+      "visibility": "list",
+      "supported_in_api": true,
+      "priority": 9,
+      "additional_speed_tiers": [],
+      "availability_nux": null,
+      "upgrade": null,
+      "base_instructions": "You are GPT-5.4 running in the Codex CLI, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+      "model_messages": null,
+      "supports_reasoning_summaries": true,
+      "default_reasoning_summary": "auto",
+      "support_verbosity": true,
+      "default_verbosity": "low",
+      "apply_patch_tool_type": "freeform",
+      "web_search_tool_type": "text",
+      "truncation_policy": {
+        "mode": "bytes",
+        "limit": 10000
+      },
+      "supports_parallel_tool_calls": true,
+      "supports_image_detail_original": false,
+      "context_window": 1050000,
+      "max_context_window": 1050000,
+      "effective_context_window_percent": 95,
+      "experimental_supported_tools": [],
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "supports_search_tool": true
+    },
+    {
+      "slug": "gpt-5.2",
+      "display_name": "gpt-5.2",
+      "description": "Optimized for professional work and long-running agents.",
+      "default_reasoning_level": "medium",
+      "supported_reasoning_levels": [
+        {
+          "effort": "low",
+          "description": "Balances speed with some reasoning; useful for straightforward queries and short explanations"
+        },
+        {
+          "effort": "medium",
+          "description": "Provides a solid balance of reasoning depth and latency for general-purpose tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Maximizes reasoning depth for complex or ambiguous problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning for complex problems"
+        }
+      ],
+      "shell_type": "shell_command",
+      "visibility": "list",
+      "supported_in_api": true,
+      "priority": 10,
+      "additional_speed_tiers": [],
+      "availability_nux": null,
+      "upgrade": {
+        "model": "gpt-5.4",
+        "migration_markdown": "You can keep using gpt-5.2 if you prefer."
+      },
+      "base_instructions": "You are GPT-5.2 running in the Codex CLI, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+      "model_messages": null,
+      "supports_reasoning_summaries": true,
+      "default_reasoning_summary": "auto",
+      "support_verbosity": true,
+      "default_verbosity": "low",
+      "apply_patch_tool_type": "freeform",
+      "web_search_tool_type": "text",
+      "truncation_policy": {
+        "mode": "bytes",
+        "limit": 10000
+      },
+      "supports_parallel_tool_calls": true,
+      "supports_image_detail_original": false,
+      "context_window": 272000,
+      "max_context_window": 272000,
+      "effective_context_window_percent": 95,
+      "experimental_supported_tools": [],
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "supports_search_tool": true
+    },
+    {
+      "slug": "gpt-5.3-codex",
+      "display_name": "gpt-5.3-codex",
+      "description": "GPT-5.3 Codex-optimized model for professional coding work in Codex CLI.",
+      "default_reasoning_level": "medium",
+      "supported_reasoning_levels": [
+        {
+          "effort": "low",
+          "description": "Balances speed with some reasoning; useful for straightforward queries and short explanations"
+        },
+        {
+          "effort": "medium",
+          "description": "Provides a solid balance of reasoning depth and latency for general-purpose tasks"
+        },
+        {
+          "effort": "high",
+          "description": "Maximizes reasoning depth for complex or ambiguous problems"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Extra high reasoning for complex problems"
+        }
+      ],
+      "shell_type": "shell_command",
+      "visibility": "list",
+      "supported_in_api": true,
+      "priority": 11,
+      "additional_speed_tiers": [],
+      "availability_nux": null,
+      "upgrade": {
+        "model": "gpt-5.4",
+        "migration_markdown": "You can keep using gpt-5.3-codex if you prefer."
+      },
+      "base_instructions": "You are GPT-5.3-Codex running in the Codex CLI, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+      "model_messages": null,
+      "supports_reasoning_summaries": true,
+      "default_reasoning_summary": "auto",
+      "support_verbosity": true,
+      "default_verbosity": "low",
+      "apply_patch_tool_type": "freeform",
+      "web_search_tool_type": "text",
+      "truncation_policy": {
+        "mode": "bytes",
+        "limit": 10000
+      },
+      "supports_parallel_tool_calls": true,
+      "supports_image_detail_original": false,
+      "context_window": 272000,
+      "max_context_window": 272000,
+      "effective_context_window_percent": 95,
+      "experimental_supported_tools": [],
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "supports_search_tool": true
+    },
+    {
+      "slug": "glm-5.1:cloud",
+      "display_name": "glm-5.1:cloud",
+      "description": "GLM 5.1 via Ollama Cloud.",
+      "default_reasoning_level": "medium",
+      "supported_reasoning_levels": [
+        {
+          "effort": "low",
+          "description": "Light reasoning for straightforward tasks"
+        },
+        {
+          "effort": "medium",
+          "description": "Balanced reasoning for general coding tasks"
+        },
+        {
+          "effort": "high",
+          "description": "More reasoning for complex coding tasks"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Maximum available reasoning for complex agentic tasks"
+        }
+      ],
+      "shell_type": "shell_command",
+      "visibility": "list",
+      "supported_in_api": true,
+      "priority": 20,
+      "additional_speed_tiers": [],
+      "availability_nux": null,
+      "upgrade": null,
+      "base_instructions": "You are GLM 5.1 running in the Codex CLI through Ollama Cloud, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+      "model_messages": null,
+      "supports_reasoning_summaries": true,
+      "default_reasoning_summary": "auto",
+      "support_verbosity": true,
+      "default_verbosity": "low",
+      "apply_patch_tool_type": "freeform",
+      "web_search_tool_type": "text",
+      "truncation_policy": {
+        "mode": "bytes",
+        "limit": 10000
+      },
+      "supports_parallel_tool_calls": true,
+      "supports_image_detail_original": false,
+      "context_window": 198000,
+      "max_context_window": 198000,
+      "effective_context_window_percent": 95,
+      "experimental_supported_tools": [],
+      "input_modalities": [
+        "text"
+      ],
+      "supports_search_tool": true
+    },
+    {
+      "slug": "glm-5:cloud",
+      "display_name": "glm-5:cloud",
+      "description": "GLM 5 via Ollama Cloud.",
+      "default_reasoning_level": "medium",
+      "supported_reasoning_levels": [
+        {
+          "effort": "low",
+          "description": "Light reasoning for straightforward tasks"
+        },
+        {
+          "effort": "medium",
+          "description": "Balanced reasoning for general coding tasks"
+        },
+        {
+          "effort": "high",
+          "description": "More reasoning for complex coding tasks"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Maximum available reasoning for complex agentic tasks"
+        }
+      ],
+      "shell_type": "shell_command",
+      "visibility": "list",
+      "supported_in_api": true,
+      "priority": 25,
+      "additional_speed_tiers": [],
+      "availability_nux": null,
+      "upgrade": null,
+      "base_instructions": "You are GLM 5 running in the Codex CLI through Ollama Cloud, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+      "model_messages": null,
+      "supports_reasoning_summaries": true,
+      "default_reasoning_summary": "auto",
+      "support_verbosity": true,
+      "default_verbosity": "low",
+      "apply_patch_tool_type": "freeform",
+      "web_search_tool_type": "text",
+      "truncation_policy": {
+        "mode": "bytes",
+        "limit": 10000
+      },
+      "supports_parallel_tool_calls": true,
+      "supports_image_detail_original": false,
+      "context_window": 198000,
+      "max_context_window": 198000,
+      "effective_context_window_percent": 95,
+      "experimental_supported_tools": [],
+      "input_modalities": [
+        "text"
+      ],
+      "supports_search_tool": true
+    },
+    {
+      "slug": "minimax-m2.7:cloud",
+      "display_name": "minimax-m2.7:cloud",
+      "description": "MiniMax M2.7 via Ollama Cloud.",
+      "default_reasoning_level": "medium",
+      "supported_reasoning_levels": [
+        {
+          "effort": "low",
+          "description": "Light reasoning for straightforward tasks"
+        },
+        {
+          "effort": "medium",
+          "description": "Balanced reasoning for general coding tasks"
+        },
+        {
+          "effort": "high",
+          "description": "More reasoning for complex coding tasks"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Maximum available reasoning for complex agentic tasks"
+        }
+      ],
+      "shell_type": "shell_command",
+      "visibility": "list",
+      "supported_in_api": true,
+      "priority": 30,
+      "additional_speed_tiers": [],
+      "availability_nux": null,
+      "upgrade": null,
+      "base_instructions": "You are MiniMax M2.7 running in the Codex CLI through Ollama Cloud, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+      "model_messages": null,
+      "supports_reasoning_summaries": true,
+      "default_reasoning_summary": "auto",
+      "support_verbosity": true,
+      "default_verbosity": "low",
+      "apply_patch_tool_type": "freeform",
+      "web_search_tool_type": "text",
+      "truncation_policy": {
+        "mode": "bytes",
+        "limit": 10000
+      },
+      "supports_parallel_tool_calls": true,
+      "supports_image_detail_original": false,
+      "context_window": 200000,
+      "max_context_window": 200000,
+      "effective_context_window_percent": 95,
+      "experimental_supported_tools": [],
+      "input_modalities": [
+        "text"
+      ],
+      "supports_search_tool": true
+    },
+    {
+      "slug": "minimax-m2.5:cloud",
+      "display_name": "minimax-m2.5:cloud",
+      "description": "MiniMax M2.5 via Ollama Cloud.",
+      "default_reasoning_level": "medium",
+      "supported_reasoning_levels": [
+        {
+          "effort": "low",
+          "description": "Light reasoning for straightforward tasks"
+        },
+        {
+          "effort": "medium",
+          "description": "Balanced reasoning for general coding tasks"
+        },
+        {
+          "effort": "high",
+          "description": "More reasoning for complex coding tasks"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Maximum available reasoning for complex agentic tasks"
+        }
+      ],
+      "shell_type": "shell_command",
+      "visibility": "list",
+      "supported_in_api": true,
+      "priority": 31,
+      "additional_speed_tiers": [],
+      "availability_nux": null,
+      "upgrade": null,
+      "base_instructions": "You are MiniMax M2.5 running in the Codex CLI through Ollama Cloud, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+      "model_messages": null,
+      "supports_reasoning_summaries": true,
+      "default_reasoning_summary": "auto",
+      "support_verbosity": true,
+      "default_verbosity": "low",
+      "apply_patch_tool_type": "freeform",
+      "web_search_tool_type": "text",
+      "truncation_policy": {
+        "mode": "bytes",
+        "limit": 10000
+      },
+      "supports_parallel_tool_calls": true,
+      "supports_image_detail_original": false,
+      "context_window": 200000,
+      "max_context_window": 200000,
+      "effective_context_window_percent": 95,
+      "experimental_supported_tools": [],
+      "input_modalities": [
+        "text"
+      ],
+      "supports_search_tool": true
+    },
+    {
+      "slug": "kimi-k2.6:cloud",
+      "display_name": "kimi-k2.6:cloud",
+      "description": "Kimi K2.6 via Ollama Cloud.",
+      "default_reasoning_level": "medium",
+      "supported_reasoning_levels": [
+        {
+          "effort": "low",
+          "description": "Light reasoning for straightforward tasks"
+        },
+        {
+          "effort": "medium",
+          "description": "Balanced reasoning for general coding tasks"
+        },
+        {
+          "effort": "high",
+          "description": "More reasoning for complex coding and multimodal tasks"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Maximum available reasoning for complex agentic tasks"
+        }
+      ],
+      "shell_type": "shell_command",
+      "visibility": "list",
+      "supported_in_api": true,
+      "priority": 40,
+      "additional_speed_tiers": [],
+      "availability_nux": null,
+      "upgrade": null,
+      "base_instructions": "You are Kimi K2.6 running in the Codex CLI through Ollama Cloud, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+      "model_messages": null,
+      "supports_reasoning_summaries": true,
+      "default_reasoning_summary": "auto",
+      "support_verbosity": true,
+      "default_verbosity": "low",
+      "apply_patch_tool_type": "freeform",
+      "web_search_tool_type": "text",
+      "truncation_policy": {
+        "mode": "bytes",
+        "limit": 10000
+      },
+      "supports_parallel_tool_calls": true,
+      "supports_image_detail_original": false,
+      "context_window": 256000,
+      "max_context_window": 256000,
+      "effective_context_window_percent": 95,
+      "experimental_supported_tools": [],
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "supports_search_tool": true
+    },
+    {
+      "slug": "kimi-k2.5:cloud",
+      "display_name": "kimi-k2.5:cloud",
+      "description": "Kimi K2.5 via Ollama Cloud.",
+      "default_reasoning_level": "medium",
+      "supported_reasoning_levels": [
+        {
+          "effort": "low",
+          "description": "Light reasoning for straightforward tasks"
+        },
+        {
+          "effort": "medium",
+          "description": "Balanced reasoning for general coding tasks"
+        },
+        {
+          "effort": "high",
+          "description": "More reasoning for complex coding and multimodal tasks"
+        },
+        {
+          "effort": "xhigh",
+          "description": "Maximum available reasoning for complex agentic tasks"
+        }
+      ],
+      "shell_type": "shell_command",
+      "visibility": "list",
+      "supported_in_api": true,
+      "priority": 41,
+      "additional_speed_tiers": [],
+      "availability_nux": null,
+      "upgrade": null,
+      "base_instructions": "You are Kimi K2.5 running in the Codex CLI through Ollama Cloud, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+      "model_messages": null,
+      "supports_reasoning_summaries": true,
+      "default_reasoning_summary": "auto",
+      "support_verbosity": true,
+      "default_verbosity": "low",
+      "apply_patch_tool_type": "freeform",
+      "web_search_tool_type": "text",
+      "truncation_policy": {
+        "mode": "bytes",
+        "limit": 10000
+      },
+      "supports_parallel_tool_calls": true,
+      "supports_image_detail_original": false,
+      "context_window": 256000,
+      "max_context_window": 256000,
+      "effective_context_window_percent": 95,
+      "experimental_supported_tools": [],
+      "input_modalities": [
+        "text",
+        "image"
+      ],
+      "supports_search_tool": true
+    },
+    {
+      "slug": "qwen3-coder-next:cloud",
+      "display_name": "qwen3-coder-next:cloud",
+      "description": "Qwen3-Coder-Next via Ollama Cloud.",
+      "default_reasoning_level": "low",
+      "supported_reasoning_levels": [
+        {
+          "effort": "low",
+          "description": "Non-thinking mode for fast coding responses"
+        }
+      ],
+      "shell_type": "shell_command",
+      "visibility": "list",
+      "supported_in_api": true,
+      "priority": 50,
+      "additional_speed_tiers": [],
+      "availability_nux": null,
+      "upgrade": null,
+      "base_instructions": "You are Qwen3-Coder-Next running in the Codex CLI through Ollama Cloud, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+      "model_messages": null,
+      "supports_reasoning_summaries": false,
+      "default_reasoning_summary": "none",
+      "support_verbosity": true,
+      "default_verbosity": "low",
+      "apply_patch_tool_type": "freeform",
+      "web_search_tool_type": "text",
+      "truncation_policy": {
+        "mode": "bytes",
+        "limit": 10000
+      },
+      "supports_parallel_tool_calls": true,
+      "supports_image_detail_original": false,
+      "context_window": 256000,
+      "max_context_window": 256000,
+      "effective_context_window_percent": 95,
+      "experimental_supported_tools": [],
+      "input_modalities": [
+        "text"
+      ],
+      "supports_search_tool": true
+    }
+  ]
+}

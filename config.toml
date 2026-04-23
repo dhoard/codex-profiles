@@ -1,0 +1,50 @@
+model = "gpt-5.2"
+model_provider = "openai"
+model_catalog_json = "/home/dhoard/.codex/model-catalog.json"
+oss_provider = "ollama"
+approvals_reviewer = "user"
+
+[profiles."gpt-5.4"]
+model = "gpt-5.4"
+model_provider = "openai"
+
+[profiles."gpt-5.3-codex"]
+model = "gpt-5.3-codex"
+model_provider = "openai"
+
+[profiles."gpt-5.2"]
+model = "gpt-5.2"
+model_provider = "openai"
+
+[profiles."ollama-cloud-glm-5.1"]
+model = "glm-5.1:cloud"
+model_provider = "ollama-cloud"
+
+[profiles."ollama-cloud-glm-5"]
+model = "glm-5:cloud"
+model_provider = "ollama-cloud"
+
+[profiles."ollama-cloud-minimax-m2.7"]
+model = "minimax-m2.7:cloud"
+model_provider = "ollama-cloud"
+
+[profiles."ollama-cloud-minimax-m2.5"]
+model = "minimax-m2.5:cloud"
+model_provider = "ollama-cloud"
+
+[profiles."ollama-cloud-kimi-k2.6"]
+model = "kimi-k2.6:cloud"
+model_provider = "ollama-cloud"
+
+[profiles."ollama-cloud-kimi-k2.5"]
+model = "kimi-k2.5:cloud"
+model_provider = "ollama-cloud"
+
+[profiles."ollama-cloud-qwen3-coder-next"]
+model = "qwen3-coder-next:cloud"
+model_provider = "ollama-cloud"
+
+[model_providers.ollama-cloud]
+name = "Ollama Cloud"
+base_url = "https://ollama.com/v1"
+env_key = "OLLAMA_API_KEY"

@@ -1,0 +1,39 @@
+{
+  "slug": "qwen3-coder-next:cloud",
+  "display_name": "qwen3-coder-next:cloud",
+  "description": "Qwen3-Coder-Next via Ollama Cloud.",
+  "default_reasoning_level": "low",
+  "supported_reasoning_levels": [
+    {
+      "effort": "low",
+      "description": "Non-thinking mode for fast coding responses"
+    }
+  ],
+  "shell_type": "shell_command",
+  "visibility": "list",
+  "supported_in_api": true,
+  "priority": 50,
+  "additional_speed_tiers": [],
+  "availability_nux": null,
+  "upgrade": null,
+  "base_instructions": "You are Qwen3-Coder-Next running in the Codex CLI through Ollama Cloud, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+  "model_messages": null,
+  "supports_reasoning_summaries": false,
+  "default_reasoning_summary": "none",
+  "support_verbosity": true,
+  "default_verbosity": "low",
+  "apply_patch_tool_type": "freeform",
+  "web_search_tool_type": "text",
+  "truncation_policy": {
+    "mode": "bytes",
+    "limit": 10000
+  },
+  "supports_parallel_tool_calls": true,
+  "supports_image_detail_original": false,
+  "context_window": 256000,
+  "max_context_window": 256000,
+  "effective_context_window_percent": 95,
+  "experimental_supported_tools": [],
+  "input_modalities": ["text"],
+  "supports_search_tool": true
+}
