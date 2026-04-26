@@ -11,6 +11,7 @@ Capability status values:
 
 | Codex slug | Provider model id | Provider | Context | Input | Tools | Thinking | Cloud |
 |---|---|---|---:|---|---|---|---|
+| `gpt-5.5` | `gpt-5.5` | OpenAI | 1.0M | Text, Image | Yes | Yes | No |
 | `gpt-5.4` | `gpt-5.4` | OpenAI | 1.05M | Text, Image | Yes | Yes | No |
 | `gpt-5.3-codex` | `gpt-5.3-codex` | OpenAI | 272K | Text, Image | Yes | Yes | No |
 | `gpt-5.2` | `gpt-5.2` | OpenAI | 272K | Text, Image | Yes | Yes | No |
@@ -21,6 +22,16 @@ Capability status values:
 | `kimi-k2.6:cloud` | `kimi-k2.6:cloud` | Ollama | 256K | Text, Image | Yes | Yes | Yes |
 | `kimi-k2.5:cloud` | `kimi-k2.5:cloud` | Ollama | 256K | Text, Image | Yes | Yes | Yes |
 | `qwen3-coder-next:cloud` | `qwen3-coder-next:cloud` | Ollama | 256K | Text | Yes | No | Yes |
+
+## GPT-5.5
+
+- Source: OpenAI models docs and the OpenAI developer docs home page latest-model guidance.
+- Provider model id: `gpt-5.5`.
+- Context window: 1.0M, `source-verified`.
+- Input modalities: text and image, `source-verified` (image is input-only per model docs).
+- Tool/function calling: supported, `source-verified`.
+- Thinking/reasoning: `low`, `medium`, `high`, and `xhigh` (plus `none` in the API model docs), `source-verified`.
+- Notes: This repo configures `gpt-5.5` as a direct OpenAI profile with the same Codex CLI baseline fields used for `gpt-5.4`.
 
 ## GPT-5.4
 

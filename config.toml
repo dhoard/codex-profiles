@@ -4,6 +4,10 @@ model_catalog_json = "/home/dhoard/.codex/model-catalog.json"
 oss_provider = "ollama"
 approvals_reviewer = "user"
 
+[profiles."gpt-5.5"]
+model = "gpt-5.5"
+model_provider = "openai"
+
 [profiles."gpt-5.4"]
 model = "gpt-5.4"
 model_provider = "openai"
