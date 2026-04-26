@@ -1,9 +1,10 @@
 # Codex Configuration
 
-This repository builds a portable Codex CLI home directory for OpenAI GPT-5.4, GPT-5.3-Codex, and GPT-5.2 plus selected Ollama Cloud coding models.
+This repository builds a portable Codex CLI home directory for OpenAI GPT-5.5, GPT-5.4, GPT-5.3-Codex, and GPT-5.2 plus selected Ollama Cloud coding models.
 
 Configured profiles:
 
+- `gpt-5.5`
 - `gpt-5.4`
 - `gpt-5.3-codex`
 - `gpt-5.2`
@@ -74,6 +75,7 @@ Skip the backup only when you intentionally do not need the current `~/.codex`:
 ## Usage
 
 ```bash
+codex --profile gpt-5.5
 codex --profile gpt-5.4
 codex --profile gpt-5.3-codex
 codex --profile gpt-5.2
