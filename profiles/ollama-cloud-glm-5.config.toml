@@ -1,0 +1,2 @@
+model = "glm-5:cloud"
+model_provider = "ollama-cloud"

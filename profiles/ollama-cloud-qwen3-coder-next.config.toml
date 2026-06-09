@@ -1,0 +1,2 @@
+model = "qwen3-coder-next:cloud"
+model_provider = "ollama-cloud"

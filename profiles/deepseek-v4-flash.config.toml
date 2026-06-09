@@ -1,0 +1,2 @@
+model = "deepseek-v4-flash"
+model_provider = "moonbridge"

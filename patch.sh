@@ -22,7 +22,6 @@
 # Prerequisites:
 # - Must have run install.sh at least once
 # - jq must be installed
-# - python3 must be installed
 
 set -euo pipefail
 
@@ -42,7 +41,6 @@ Options:
 Requirements:
   - ~/.codex must exist (run install.sh first)
   - jq must be installed
-  - python3 must be installed
 
 USAGE
 }
@@ -74,6 +72,7 @@ required=(
   "model-catalog.json"
   "docs"
   "models"
+  "profiles"
   "scripts"
 )
 
@@ -90,7 +89,6 @@ fi
 
 # Validate JSON files
 command -v jq >/dev/null 2>&1 || { echo "error: jq is required" >&2; exit 1; }
-command -v python3 >/dev/null 2>&1 || { echo "error: python3 is required" >&2; exit 1; }
 
 shopt -s nullglob
 json_files=("$ROOT_DIR"/*.json "$ROOT_DIR/models"/*.json)
@@ -132,150 +130,29 @@ patch_config_toml() {
   local tmp
   tmp="$(mktemp "$target_config.tmp.XXXXXX")"
 
-  if ! python3 - "$source_config" "$target_config" "$tmp" <<'PY'
-import re
-import sys
-from pathlib import Path
+  # Remove model_providers sections from target (preserves user customizations).
+  awk '
+    BEGIN { in_section = 0 }
+    /^[[:space:]]*\[model_providers/ { in_section = 1; next }
+    /^[[:space:]]*\[/ && in_section { in_section = 0 }
+    in_section { next }
+    { print }
+  ' "$target_config" > "$tmp"
 
-try:
-    import tomllib
-except ModuleNotFoundError:  # Python < 3.11; keep patch.sh compatible with plain python3.
-    tomllib = None
-
-source_path = Path(sys.argv[1])
-target_path = Path(sys.argv[2])
-output_path = Path(sys.argv[3])
-
-# Match standard and array TOML table headers.  We only need to identify
-# section boundaries; the resulting file is validated with tomllib before it is
-# installed.
-TABLE_RE = re.compile(r'^\s*(\[\[?)\s*(.+?)\s*(\]\]?)\s*(?:#.*)?$')
-PATCH_ROOTS = {"profiles", "model_providers"}
-
-
-def split_dotted_name(name):
-    """Split a TOML dotted table name, respecting quoted components."""
-    parts = []
-    buf = []
-    quote = None
-    escaped = False
-
-    for char in name:
-        if quote:
-            buf.append(char)
-            if quote == '"' and char == '\\' and not escaped:
-                escaped = True
-                continue
-            if char == quote and not escaped:
-                quote = None
-            escaped = False
-            continue
-
-        if char in ('"', "'"):
-            quote = char
-            buf.append(char)
-        elif char == ".":
-            parts.append("".join(buf).strip())
-            buf = []
-        else:
-            buf.append(char)
-
-    parts.append("".join(buf).strip())
-    return parts
-
-
-def unquote_basic_name(name):
-    """Return an unquoted table component when it is a simple TOML string."""
-    if len(name) >= 2 and name[0] == name[-1] and name[0] in ('"', "'"):
-        return name[1:-1]
-    return name
-
-
-def table_root(line):
-    match = TABLE_RE.match(line)
-    if not match:
-        return None
-    opener, name, closer = match.groups()
-    if (opener == "[[") != (closer == "]]"):
-        return None
-    return unquote_basic_name(split_dotted_name(name.strip())[0])
-
-
-def without_patch_sections(lines):
-    kept = []
-    skipping = False
-
-    for line in lines:
-        root = table_root(line)
-        if root is not None:
-            skipping = root in PATCH_ROOTS
-
-        if not skipping:
-            kept.append(line)
-
-    # Avoid accumulating whitespace where removed sections used to be.
-    while kept and kept[-1].strip() == "":
-        kept.pop()
-
-    return kept
-
-
-def patch_sections(lines):
-    sections = []
-    collecting = False
-
-    for line in lines:
-        root = table_root(line)
-        if root is not None:
-            collecting = root in PATCH_ROOTS
-
-        if collecting:
-            sections.append(line)
-
-    while sections and sections[0].strip() == "":
-        sections.pop(0)
-    while sections and sections[-1].strip() == "":
-        sections.pop()
-
-    return sections
-
-
-target_lines = target_path.read_text().splitlines()
-source_lines = source_path.read_text().splitlines()
-
-source_text = source_path.read_text()
-target_text = target_path.read_text()
-
-# When available, fail before writing if either input is not valid TOML.  This
-# keeps the patch operation non-destructive without requiring Python 3.11+.
-if tomllib is not None:
-    tomllib.loads(source_text)
-    tomllib.loads(target_text)
-
-kept = without_patch_sections(target_lines)
-sections = patch_sections(source_lines)
-
-if not sections:
-    raise SystemExit("source config.toml does not contain profiles or model_providers sections")
-
-output_lines = kept
-if output_lines:
-    output_lines.extend(["", ""])
-output_lines.extend(sections)
-
-output = "\n".join(output_lines) + "\n"
-if tomllib is not None:
-    tomllib.loads(output)
-output_path.write_text(output)
-PY
-  then
-    rm -f "$tmp"
-    return 1
-  fi
+  # Append model_providers sections from source.
+  awk '
+    BEGIN { in_section = 0; started = 0 }
+    /^[[:space:]]*\[model_providers/ { in_section = 1 }
+    /^[[:space:]]*\[/ && in_section && !/^[[:space:]]*\[model_providers/ { in_section = 0 }
+    in_section {
+      if (!started) { started = 1; print "" }
+      print
+    }
+  ' "$source_config" >> "$tmp"
 
   if [[ "$DRY_RUN" == true ]]; then
     rm -f "$tmp"
-    log "would patch profiles and model_providers in $target_config"
+    log "would patch model_providers in $target_config"
     return
   fi
 
@@ -286,9 +163,9 @@ PY
 # Update static files
 log "Patching $CODEX_HOME"
 
-# 1. Patch config.toml profiles and model providers only.
-#    Other existing config.toml data (for example projects, MCP servers,
-#    sandbox/approval settings, and local user preferences) is preserved.
+# 1. Patch config.toml model_providers only.
+#    Other existing config.toml data (for example sandbox, permissions,
+#    hooks, MCP servers, and local user preferences) is preserved.
 patch_config_toml "$ROOT_DIR/config.toml" "$CODEX_HOME/config.toml"
 
 # 2. Update model-catalog.json (overwrite)
@@ -307,7 +184,15 @@ run rm -rf "$CODEX_HOME/scripts"
 run cp -a "$ROOT_DIR/scripts" "$CODEX_HOME/"
 run chmod +x "$CODEX_HOME/scripts"/*.sh 2>/dev/null || true
 
-# 6. Update README.md (overwrite)
+# 6. Sync profile files to ~/.codex/<name>.config.toml
+shopt -s nullglob
+for profile_file in "$ROOT_DIR"/profiles/*.config.toml; do
+  profile_name="$(basename "$profile_file")"
+  run cp "$profile_file" "$CODEX_HOME/$profile_name"
+done
+shopt -u nullglob
+
+# 7. Update README.md (overwrite)
 run cp "$ROOT_DIR/README.md" "$CODEX_HOME/README.md"
 
 # Ensure runtime directories exist (don't delete if they exist)
