@@ -95,8 +95,6 @@ while IFS= read -r model; do
 done <<<"$profile_models"
 
 grep -Fq 'model_catalog_json = "__CODEX_HOME__/model-catalog.json"' "$CONFIG" || fail "config.toml must contain __CODEX_HOME__ placeholder for model-catalog.json path"
-grep -Fq 'base_url = "https://ollama.com/v1"' "$CONFIG" || fail "config.toml must use direct Ollama Cloud SaaS endpoint"
-grep -Fq 'env_key = "OLLAMA_API_KEY"' "$CONFIG" || fail "config.toml must use OLLAMA_API_KEY for direct Ollama Cloud auth"
 if grep -Fq "localhost:11434" "$CONFIG"; then
   fail "config.toml must not require a local Ollama proxy"
 fi

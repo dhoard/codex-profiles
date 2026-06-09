@@ -8,6 +8,8 @@ Configured profiles:
 - `gpt-5.4`
 - `gpt-5.3-codex`
 - `gpt-5.2`
+- `deepseek-v4-pro`
+- `deepseek-v4-flash`
 - `ollama-cloud-deepseek-v4-pro`
 - `ollama-cloud-deepseek-v4-flash`
 - `ollama-cloud-glm-5.1`
@@ -30,6 +32,12 @@ For OpenAI GPT-5.2, run:
 
 ```bash
 codex login
+```
+
+For DeepSeek models, create an API key from platform.deepseek.com and set:
+
+```bash
+export DEEPSEEK_API_KEY="..."
 ```
 
 For Ollama Cloud models, create an API key from ollama.com and set:
@@ -81,6 +89,8 @@ codex --profile gpt-5.5
 codex --profile gpt-5.4
 codex --profile gpt-5.3-codex
 codex --profile gpt-5.2
+codex --profile deepseek-v4-pro
+codex --profile deepseek-v4-flash
 codex --profile ollama-cloud-deepseek-v4-pro
 codex --profile ollama-cloud-deepseek-v4-flash
 codex --profile ollama-cloud-glm-5.1

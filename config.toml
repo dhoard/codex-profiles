@@ -20,6 +20,14 @@ model_provider = "openai"
 model = "gpt-5.2"
 model_provider = "openai"
 
+[profiles."deepseek-v4-pro"]
+model = "deepseek-v4-pro"
+model_provider = "deepseek"
+
+[profiles."deepseek-v4-flash"]
+model = "deepseek-v4-flash"
+model_provider = "deepseek"
+
 [profiles."ollama-cloud-deepseek-v4-pro"]
 model = "deepseek-v4-pro:cloud"
 model_provider = "ollama-cloud"
@@ -55,6 +63,11 @@ model_provider = "ollama-cloud"
 [profiles."ollama-cloud-qwen3-coder-next"]
 model = "qwen3-coder-next:cloud"
 model_provider = "ollama-cloud"
+
+[model_providers.deepseek]
+name = "DeepSeek"
+base_url = "https://api.deepseek.com"
+env_key = "DEEPSEEK_API_KEY"
 
 [model_providers.ollama-cloud]
 name = "Ollama Cloud"
