@@ -159,12 +159,15 @@ cat <<'POSTINSTALL'
 
 Authentication:
   codex login
+  export DEEPSEEK_API_KEY="..."
   export OLLAMA_API_KEY="..."
 
 Profiles:
   codex --profile gpt-5.4
   codex --profile gpt-5.3-codex
   codex --profile gpt-5.2
+  codex --profile deepseek-v4-pro
+  codex --profile deepseek-v4-flash
   codex --profile ollama-cloud-glm-5.1
   codex --profile ollama-cloud-glm-5
   codex --profile ollama-cloud-minimax-m2.7

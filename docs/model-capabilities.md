@@ -15,6 +15,8 @@ Capability status values:
 | `gpt-5.4` | `gpt-5.4` | OpenAI | 1.05M | Text, Image | Yes | Yes | No |
 | `gpt-5.3-codex` | `gpt-5.3-codex` | OpenAI | 272K | Text, Image | Yes | Yes | No |
 | `gpt-5.2` | `gpt-5.2` | OpenAI | 272K | Text, Image | Yes | Yes | No |
+| `deepseek-v4-pro` | `deepseek-v4-pro` | DeepSeek | 1M | Text | Yes | Yes | No |
+| `deepseek-v4-flash` | `deepseek-v4-flash` | DeepSeek | 1M | Text | Yes | Yes | No |
 | `deepseek-v4-pro:cloud` | `deepseek-v4-pro:cloud` | Ollama | 1M | Text | Yes | Yes | Yes |
 | `deepseek-v4-flash:cloud` | `deepseek-v4-flash:cloud` | Ollama | 1M | Text | Yes | Yes | Yes |
 | `glm-5.1:cloud` | `glm-5.1:cloud` | Ollama | 198K | Text | Yes | Yes | Yes |
@@ -64,6 +66,32 @@ Capability status values:
 - Tool/function calling: enabled through Codex model catalog fields, `source-verified`.
 - Thinking/reasoning: `low`, `medium`, `high`, and `xhigh`, `source-verified`.
 - Notes: This entry preserves standard Codex access alongside the custom Ollama Cloud entries.
+
+## DeepSeek V4 Pro (Direct API)
+
+- Source: `https://api-docs.deepseek.com`.
+- Provider model id: `deepseek-v4-pro`.
+- Codex provider: direct DeepSeek API at `https://api.deepseek.com` with `DEEPSEEK_API_KEY`, `pending-runtime`.
+- Context window: 1M, `source-verified`.
+- Input modalities: text, `source-verified`.
+- Tool/function calling: supported, OpenAI-compatible endpoint, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: `low`, `medium`, and `high` (maps to `non-thinking`, `thinking`, `thinking_max`), `source-verified`, `pending-runtime` for Codex reasoning levels.
+- Cloud: no (direct API), `source-verified`.
+- Codex web search: enabled to match the `gpt-5.2` baseline, `pending-runtime`.
+- Notes: Frontier Mixture-of-Experts model with 1.6T total parameters and 49B activated. Strongest DeepSeek model for agentic coding and hard reasoning.
+
+## DeepSeek V4 Flash (Direct API)
+
+- Source: `https://api-docs.deepseek.com`.
+- Provider model id: `deepseek-v4-flash`.
+- Codex provider: direct DeepSeek API at `https://api.deepseek.com` with `DEEPSEEK_API_KEY`, `pending-runtime`.
+- Context window: 1M, `source-verified`.
+- Input modalities: text, `source-verified`.
+- Tool/function calling: supported, OpenAI-compatible endpoint, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: `low`, `medium`, and `high` (maps to `non-thinking`, `thinking`, `thinking_max`), `source-verified`, `pending-runtime` for Codex reasoning levels.
+- Cloud: no (direct API), `source-verified`.
+- Codex web search: enabled to match the `gpt-5.2` baseline, `pending-runtime`.
+- Notes: Faster and more economical DeepSeek model with 284B total parameters and 13B activated. Good for high-volume and cost-sensitive workloads.
 
 ## DeepSeek V4 Pro
 
