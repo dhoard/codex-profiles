@@ -16,6 +16,8 @@ Capability status values:
 | `deepseek-v4-flash` | `deepseek-v4-flash` | DeepSeek | 1M | Text | Yes | Yes | No |
 | `deepseek-v4-pro:cloud` | `deepseek-v4-pro:cloud` | Ollama | 1M | Text | Yes | Yes | Yes |
 | `deepseek-v4-flash:cloud` | `deepseek-v4-flash:cloud` | Ollama | 1M | Text | Yes | Yes | Yes |
+| `glm-5.1` | `glm-5.1` | Z.AI | 200K | Text | Yes | Yes | No |
+| `glm-4.7` | `glm-4.7` | Z.AI | 200K | Text | Yes | Yes | No |
 | `glm-5.1:cloud` | `glm-5.1:cloud` | Ollama | 198K | Text | Yes | Yes | Yes |
 | `glm-5:cloud` | `glm-5:cloud` | Ollama | 198K | Text | Yes | Yes | Yes |
 | `minimax-m2.7:cloud` | `minimax-m2.7:cloud` | Ollama | 200K | Text | Yes | Yes | Yes |
@@ -87,6 +89,34 @@ Capability status values:
 - Cloud: Ollama tags the model with `cloud`, `source-verified`.
 - Codex web search: enabled to match the `gpt-5.2` baseline, `pending-runtime`.
 - Notes: Preview of the DeepSeek-V4 series with 284B total parameters and 13B activated.
+
+## GLM 5.1 (Z.AI Coding Plan)
+
+- Source: `https://docs.z.ai/guides/llm/glm-5.1`.
+- Codex slug: `glm-5.1`.
+- Provider model id: `glm-5.1`.
+- Codex provider: Moon Bridge at `http://127.0.0.1:38440/v1` with Z.AI coding endpoint `https://api.z.ai/api/coding/paas/v4`, `pending-runtime`.
+- Context window: 200K, `source-verified`.
+- Input modalities: text, `source-verified`.
+- Tool/function calling: supported via Moon Bridge protocol translation, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: `low`, `medium`, `high`, and `xhigh`, `source-verified`, `pending-runtime` for Codex reasoning levels.
+- Cloud: no (local Moon Bridge), `source-verified`.
+- Codex web search: enabled to match the `gpt-5.5` baseline, `pending-runtime`.
+- Notes: Flagship model aligned with Claude Opus 4.6. Requires Moon Bridge configured with Z.AI Coding Plan base URL and API key.
+
+## GLM 4.7 (Z.AI Coding Plan)
+
+- Source: `https://docs.z.ai/guides/llm/glm-4.7`.
+- Codex slug: `glm-4.7`.
+- Provider model id: `glm-4.7`.
+- Codex provider: Moon Bridge at `http://127.0.0.1:38440/v1` with Z.AI coding endpoint `https://api.z.ai/api/coding/paas/v4`, `pending-runtime`.
+- Context window: 200K, `source-verified`.
+- Input modalities: text, `source-verified`.
+- Tool/function calling: supported via Moon Bridge protocol translation, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: `low`, `medium`, `high`, and `xhigh`, `source-verified`, `pending-runtime` for Codex reasoning levels.
+- Cloud: no (local Moon Bridge), `source-verified`.
+- Codex web search: enabled to match the `gpt-5.5` baseline, `pending-runtime`.
+- Notes: Enhanced programming and reasoning model aligned with Claude Sonnet 4.5. Requires Moon Bridge configured with Z.AI Coding Plan base URL and API key.
 
 ## GLM 5.1
 

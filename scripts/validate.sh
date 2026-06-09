@@ -80,6 +80,8 @@ jq -e '.models | type == "array" and length > 0' "$CATALOG" >/dev/null || fail "
 profile_models="$(
   shopt -s nullglob
   for f in "$ROOT_DIR"/profiles/*.config.toml; do
+    profile_name="$(basename "$f" .config.toml)"
+    [[ "$profile_name" =~ ^[A-Za-z0-9_-]+$ ]] || fail "invalid profile filename for Codex --profile: $f"
     awk -F= '
       /^[[:space:]]*model[[:space:]]*=/ {
         value=$2

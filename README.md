@@ -11,6 +11,8 @@ Configured profiles:
 - `deepseek-v4-flash`
 - `ollama-cloud-deepseek-v4-pro`
 - `ollama-cloud-deepseek-v4-flash`
+- `zai-coding-glm-5-1`
+- `zai-coding-glm-4-7`
 - `ollama-cloud-glm-5-1`
 - `ollama-cloud-glm-5`
 - `ollama-cloud-minimax-m2-7`
@@ -38,12 +40,25 @@ codex login
 DeepSeek models require [Moon Bridge](https://github.com/ZhiYi-R/moon-bridge) running locally. Codex uses the Responses API exclusively; Moon Bridge translates to DeepSeek's Chat Completions API.
 
 1. Install and start Moon Bridge (default: `http://127.0.0.1:38440`)
-2. Configure your DeepSeek API key in Moon Bridge's `config.yml`
+2. Configure your DeepSeek API key and DeepSeek routes in Moon Bridge's `config.yml`
 3. Run:
 
 ```bash
 codex --profile deepseek-v4-pro
 codex --profile deepseek-v4-flash
+```
+
+### Z.AI Coding Plan
+
+Z.AI models require [Moon Bridge](https://github.com/ZhiYi-R/moon-bridge) running locally. Codex uses the Responses API exclusively; Moon Bridge translates to Z.AI's Chat Completions API.
+
+1. Install and start Moon Bridge (default: `http://127.0.0.1:38440`)
+2. Configure Moon Bridge with `glm-5.1` / `glm-4.7` models, a Z.AI provider using `https://api.z.ai/api/coding/paas/v4`, and routes for those model names. See [docs/moon-bridge-multi-provider.md](docs/moon-bridge-multi-provider.md).
+3. Run:
+
+```bash
+codex --profile zai-coding-glm-5-1
+codex --profile zai-coding-glm-4-7
 ```
 
 ### Ollama Cloud
@@ -65,8 +80,9 @@ Codex CLI uses the **Responses API** (`/v1/responses`) exclusively. The older Ch
 | OpenAI | Responses | Yes | No |
 | Ollama Cloud | Responses (v0.13.3+) | Yes | No |
 | DeepSeek | Chat Completions only | **No** | Yes — use [Moon Bridge](https://github.com/ZhiYi-R/moon-bridge) |
+| Z.AI | Chat Completions only | **No** | Yes — use [Moon Bridge](https://github.com/ZhiYi-R/moon-bridge) |
 
-Moon Bridge is a Go-based proxy that translates Codex Responses API calls into DeepSeek Chat Completions API calls.
+Moon Bridge is a Go-based proxy that translates Codex Responses API calls into upstream provider APIs. For DeepSeek plus Z.AI routing, see [docs/moon-bridge-multi-provider.md](docs/moon-bridge-multi-provider.md).
 
 ## Validate
 
@@ -110,6 +126,8 @@ codex --profile deepseek-v4-pro
 codex --profile deepseek-v4-flash
 codex --profile ollama-cloud-deepseek-v4-pro
 codex --profile ollama-cloud-deepseek-v4-flash
+codex --profile zai-coding-glm-5-1
+codex --profile zai-coding-glm-4-7
 codex --profile ollama-cloud-glm-5-1
 codex --profile ollama-cloud-glm-5
 codex --profile ollama-cloud-minimax-m2-7
