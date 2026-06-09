@@ -119,6 +119,10 @@ for path in "${copy_paths[@]}"; do
   run cp -a "$ROOT_DIR/$path" "$CODEX_HOME/"
 done
 
+if [[ "$DRY_RUN" != true ]]; then
+  sed -i "s|__CODEX_HOME__|$CODEX_HOME|g" "$CODEX_HOME/config.toml"
+fi
+
 for optional_path in rules skills; do
   if [[ -e "$ROOT_DIR/$optional_path" ]]; then
     run cp -a "$ROOT_DIR/$optional_path" "$CODEX_HOME/"
