@@ -1,6 +1,6 @@
 model = "gpt-5.2"
 model_provider = "openai"
-model_catalog_json = "/home/dhoard/.codex/model-catalog.json"
+model_catalog_json = "__CODEX_HOME__/model-catalog.json"
 oss_provider = "ollama"
 approvals_reviewer = "user"
 
