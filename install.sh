@@ -169,12 +169,21 @@ cat <<'POSTINSTALL'
 Authentication:
   codex login
   export DEEPSEEK_API_KEY="..."
+  export ZHIPU_API_KEY="..."
   export OLLAMA_API_KEY="..."
+
+Moon Bridge profiles:
+  DeepSeek and Z.AI Coding Plan profiles require Moon Bridge at http://127.0.0.1:38440/v1.
+  Moon Bridge config.yml must define models/providers/routes for both DeepSeek and Z.AI.
+  If zai-coding-* says only deepseek-v4-pro/flash are supported, add glm routes.
+  See: ~/.codex/docs/moon-bridge-multi-provider.md
 
 Profiles:
   codex --profile gpt-5-5
   codex --profile deepseek-v4-pro
   codex --profile deepseek-v4-flash
+  codex --profile zai-coding-glm-5-1
+  codex --profile zai-coding-glm-4-7
   codex --profile ollama-cloud-deepseek-v4-pro
   codex --profile ollama-cloud-deepseek-v4-flash
   codex --profile ollama-cloud-glm-5-1

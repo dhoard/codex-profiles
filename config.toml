@@ -13,3 +13,9 @@ wire_api = "responses"
 name = "Ollama Cloud"
 base_url = "https://ollama.com/v1"
 env_key = "OLLAMA_API_KEY"
+
+[model_providers.zai-coding]
+name = "Z.AI Coding Plan"
+base_url = "http://127.0.0.1:38440/v1"
+env_key = "ZHIPU_API_KEY"
+wire_api = "responses"
