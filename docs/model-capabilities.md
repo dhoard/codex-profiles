@@ -12,9 +12,6 @@ Capability status values:
 | Codex slug | Provider model id | Provider | Context | Input | Tools | Thinking | Cloud |
 |---|---|---|---:|---|---|---|---|
 | `gpt-5.5` | `gpt-5.5` | OpenAI | 1.0M | Text, Image | Yes | Yes | No |
-| `gpt-5.4` | `gpt-5.4` | OpenAI | 1.05M | Text, Image | Yes | Yes | No |
-| `gpt-5.3-codex` | `gpt-5.3-codex` | OpenAI | 272K | Text, Image | Yes | Yes | No |
-| `gpt-5.2` | `gpt-5.2` | OpenAI | 272K | Text, Image | Yes | Yes | No |
 | `deepseek-v4-pro` | `deepseek-v4-pro` | DeepSeek | 1M | Text | Yes | Yes | No |
 | `deepseek-v4-flash` | `deepseek-v4-flash` | DeepSeek | 1M | Text | Yes | Yes | No |
 | `deepseek-v4-pro:cloud` | `deepseek-v4-pro:cloud` | Ollama | 1M | Text | Yes | Yes | Yes |
@@ -35,63 +32,35 @@ Capability status values:
 - Input modalities: text and image, `source-verified` (image is input-only per model docs).
 - Tool/function calling: supported, `source-verified`.
 - Thinking/reasoning: `low`, `medium`, `high`, and `xhigh` (plus `none` in the API model docs), `source-verified`.
-- Notes: This repo configures `gpt-5.5` as a direct OpenAI profile with the same Codex CLI baseline fields used for `gpt-5.4`.
+- Notes: This repo configures `gpt-5.5` as the default OpenAI profile.
 
-## GPT-5.4
-
-- Source: OpenAI model docs for GPT-5.4 and the GPT-5.4 release post.
-- Provider model id: `gpt-5.4`.
-- Context window: 1.05M, `source-verified` (Codex may require explicit configuration to use >272K).
-- Input modalities: text and image, `source-verified` (image is input-only per model docs).
-- Tool/function calling: supported, `source-verified`.
-- Thinking/reasoning: `low`, `medium`, `high`, and `xhigh` (plus `none` as default in the API), `source-verified`.
-- Notes: This repo keeps the same Codex CLI baseline fields as `gpt-5.2` while updating context window metadata.
-
-## GPT-5.3-Codex
-
-- Source: local Codex model catalog cache at `~/.codex/models_cache.json`.
-- Provider model id: `gpt-5.3-codex`.
-- Context window: 272K, `pending-runtime` (mirror of `gpt-5.2` until source-verified).
-- Input modalities: text and image, `pending-runtime` (mirror of `gpt-5.2` until source-verified).
-- Tool/function calling: enabled through Codex model catalog fields, `pending-runtime`.
-- Thinking/reasoning: `low`, `medium`, `high`, and `xhigh`, `pending-runtime`.
-- Notes: Configure identically to `gpt-5.2` for Codex CLI, but with the `gpt-5.3-codex` provider model id.
-
-## GPT-5.2
-
-- Source: local Codex model catalog cache at `~/.codex/models_cache.json`.
-- Provider model id: `gpt-5.2`.
-- Context window: 272K, `source-verified`.
-- Input modalities: text and image, `source-verified`.
-- Tool/function calling: enabled through Codex model catalog fields, `source-verified`.
-- Thinking/reasoning: `low`, `medium`, `high`, and `xhigh`, `source-verified`.
-- Notes: This entry preserves standard Codex access alongside the custom Ollama Cloud entries.
-
-## DeepSeek V4 Pro (Direct API)
+## DeepSeek V4 Pro (via Moon Bridge)
 
 - Source: `https://api-docs.deepseek.com`.
+- Codex slug: `deepseek-v4-pro`.
 - Provider model id: `deepseek-v4-pro`.
-- Codex provider: direct DeepSeek API at `https://api.deepseek.com` with `DEEPSEEK_API_KEY`, `pending-runtime`.
+- Codex provider: Moon Bridge at `http://127.0.0.1:38440/v1`, `pending-runtime`.
 - Context window: 1M, `source-verified`.
 - Input modalities: text, `source-verified`.
-- Tool/function calling: supported, OpenAI-compatible endpoint, `source-verified`, `pending-runtime` for Codex.
-- Thinking/reasoning: `low`, `medium`, and `high` (maps to `non-thinking`, `thinking`, `thinking_max`), `source-verified`, `pending-runtime` for Codex reasoning levels.
-- Cloud: no (direct API), `source-verified`.
-- Codex web search: enabled to match the `gpt-5.2` baseline, `pending-runtime`.
-- Notes: Frontier Mixture-of-Experts model with 1.6T total parameters and 49B activated. Strongest DeepSeek model for agentic coding and hard reasoning.
+- Tool/function calling: supported via Moon Bridge protocol translation, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: `high` and `xhigh`, `source-verified`, `pending-runtime` for Codex reasoning levels.
+- Cloud: no (local Moon Bridge), `source-verified`.
+- Codex web search: enabled to match the `gpt-5.5` baseline, `pending-runtime`.
+- Notes: Frontier Mixture-of-Experts model with 1.6T total parameters and 49B activated. Requires Moon Bridge running locally.
 
-## DeepSeek V4 Flash (Direct API)
+## DeepSeek V4 Flash (via Moon Bridge)
 
 - Source: `https://api-docs.deepseek.com`.
+- Codex slug: `deepseek-v4-flash`.
 - Provider model id: `deepseek-v4-flash`.
-- Codex provider: direct DeepSeek API at `https://api.deepseek.com` with `DEEPSEEK_API_KEY`, `pending-runtime`.
+- Codex provider: Moon Bridge at `http://127.0.0.1:38440/v1`, `pending-runtime`.
 - Context window: 1M, `source-verified`.
 - Input modalities: text, `source-verified`.
-- Tool/function calling: supported, OpenAI-compatible endpoint, `source-verified`, `pending-runtime` for Codex.
-- Thinking/reasoning: `low`, `medium`, and `high` (maps to `non-thinking`, `thinking`, `thinking_max`), `source-verified`, `pending-runtime` for Codex reasoning levels.
-- Cloud: no (direct API), `source-verified`.
-- Codex web search: enabled to match the `gpt-5.2` baseline, `pending-runtime`.
-- Notes: Faster and more economical DeepSeek model with 284B total parameters and 13B activated. Good for high-volume and cost-sensitive workloads.
+- Tool/function calling: supported via Moon Bridge protocol translation, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: `high` and `xhigh`, `source-verified`, `pending-runtime` for Codex reasoning levels.
+- Cloud: no (local Moon Bridge), `source-verified`.
+- Codex web search: enabled to match the `gpt-5.5` baseline, `pending-runtime`.
+- Notes: Faster and more economical DeepSeek model with 284B total parameters and 13B activated. Requires Moon Bridge running locally.
 
 ## DeepSeek V4 Pro
 

@@ -66,6 +66,7 @@ required=(
   "model-catalog.json"
   "docs"
   "models"
+  "profiles"
   "scripts"
 )
 
@@ -119,6 +120,14 @@ for path in "${copy_paths[@]}"; do
   run cp -a "$ROOT_DIR/$path" "$CODEX_HOME/"
 done
 
+# Copy profile files to ~/.codex/<name>.config.toml
+shopt -s nullglob
+for profile_file in "$ROOT_DIR"/profiles/*.config.toml; do
+  profile_name="$(basename "$profile_file")"
+  run cp "$profile_file" "$CODEX_HOME/$profile_name"
+done
+shopt -u nullglob
+
 if [[ "$DRY_RUN" != true ]]; then
   sed -i "s|__CODEX_HOME__|$CODEX_HOME|g" "$CODEX_HOME/config.toml"
 fi
@@ -163,17 +172,17 @@ Authentication:
   export OLLAMA_API_KEY="..."
 
 Profiles:
-  codex --profile gpt-5.4
-  codex --profile gpt-5.3-codex
-  codex --profile gpt-5.2
+  codex --profile gpt-5-5
   codex --profile deepseek-v4-pro
   codex --profile deepseek-v4-flash
-  codex --profile ollama-cloud-glm-5.1
+  codex --profile ollama-cloud-deepseek-v4-pro
+  codex --profile ollama-cloud-deepseek-v4-flash
+  codex --profile ollama-cloud-glm-5-1
   codex --profile ollama-cloud-glm-5
-  codex --profile ollama-cloud-minimax-m2.7
-  codex --profile ollama-cloud-minimax-m2.5
-  codex --profile ollama-cloud-kimi-k2.6
-  codex --profile ollama-cloud-kimi-k2.5
+  codex --profile ollama-cloud-minimax-m2-7
+  codex --profile ollama-cloud-minimax-m2-5
+  codex --profile ollama-cloud-kimi-k2-6
+  codex --profile ollama-cloud-kimi-k2-5
   codex --profile ollama-cloud-qwen3-coder-next
 
 POSTINSTALL

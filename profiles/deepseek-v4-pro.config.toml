@@ -1,0 +1,2 @@
+model = "deepseek-v4-pro"
+model_provider = "moonbridge"

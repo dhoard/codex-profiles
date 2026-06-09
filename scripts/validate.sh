@@ -78,14 +78,17 @@ cmp -s "$tmp_catalog" "$CATALOG" || fail "model-catalog.json is stale; run scrip
 jq -e '.models | type == "array" and length > 0' "$CATALOG" >/dev/null || fail "catalog must contain a non-empty models array"
 
 profile_models="$(
-  awk -F= '
-    /^[[:space:]]*model[[:space:]]*=/ {
-      value=$2
-      sub(/^[[:space:]]*"/, "", value)
-      sub(/"[[:space:]]*$/, "", value)
-      print value
-    }
-  ' "$CONFIG" | sort -u
+  shopt -s nullglob
+  for f in "$ROOT_DIR"/profiles/*.config.toml; do
+    awk -F= '
+      /^[[:space:]]*model[[:space:]]*=/ {
+        value=$2
+        sub(/^[[:space:]]*"/, "", value)
+        sub(/"[[:space:]]*$/, "", value)
+        print value
+      }
+    ' "$f"
+  done | sort -u
 )"
 
 catalog_slugs="$(jq -r '.models[].slug' "$CATALOG" | sort -u)"
