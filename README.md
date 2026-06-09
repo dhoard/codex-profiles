@@ -1,6 +1,6 @@
 # Codex Configuration
 
-This repository builds a portable Codex CLI home directory for OpenAI GPT-5.5 plus DeepSeek and selected Ollama Cloud coding models.
+This repository builds a portable Codex CLI home directory for OpenAI GPT-5.5, DeepSeek, Z.ai coding plan, and selected Ollama Cloud coding models.
 
 **Requires Codex CLI 0.134.0 or later** (profiles use the `<name>.config.toml` format introduced in 0.134.0).
 
