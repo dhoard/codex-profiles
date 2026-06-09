@@ -8,6 +8,8 @@ Configured profiles:
 - `gpt-5.4`
 - `gpt-5.3-codex`
 - `gpt-5.2`
+- `ollama-cloud-deepseek-v4-pro`
+- `ollama-cloud-deepseek-v4-flash`
 - `ollama-cloud-glm-5.1`
 - `ollama-cloud-glm-5`
 - `ollama-cloud-minimax-m2.7`
@@ -79,6 +81,8 @@ codex --profile gpt-5.5
 codex --profile gpt-5.4
 codex --profile gpt-5.3-codex
 codex --profile gpt-5.2
+codex --profile ollama-cloud-deepseek-v4-pro
+codex --profile ollama-cloud-deepseek-v4-flash
 codex --profile ollama-cloud-glm-5.1
 codex --profile ollama-cloud-glm-5
 codex --profile ollama-cloud-minimax-m2.7

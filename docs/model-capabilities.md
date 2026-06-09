@@ -15,6 +15,8 @@ Capability status values:
 | `gpt-5.4` | `gpt-5.4` | OpenAI | 1.05M | Text, Image | Yes | Yes | No |
 | `gpt-5.3-codex` | `gpt-5.3-codex` | OpenAI | 272K | Text, Image | Yes | Yes | No |
 | `gpt-5.2` | `gpt-5.2` | OpenAI | 272K | Text, Image | Yes | Yes | No |
+| `deepseek-v4-pro:cloud` | `deepseek-v4-pro:cloud` | Ollama | 1M | Text | Yes | Yes | Yes |
+| `deepseek-v4-flash:cloud` | `deepseek-v4-flash:cloud` | Ollama | 1M | Text | Yes | Yes | Yes |
 | `glm-5.1:cloud` | `glm-5.1:cloud` | Ollama | 198K | Text | Yes | Yes | Yes |
 | `glm-5:cloud` | `glm-5:cloud` | Ollama | 198K | Text | Yes | Yes | Yes |
 | `minimax-m2.7:cloud` | `minimax-m2.7:cloud` | Ollama | 200K | Text | Yes | Yes | Yes |
@@ -62,6 +64,32 @@ Capability status values:
 - Tool/function calling: enabled through Codex model catalog fields, `source-verified`.
 - Thinking/reasoning: `low`, `medium`, `high`, and `xhigh`, `source-verified`.
 - Notes: This entry preserves standard Codex access alongside the custom Ollama Cloud entries.
+
+## DeepSeek V4 Pro
+
+- Source: `https://ollama.com/library/deepseek-v4-pro`.
+- Provider model id: `deepseek-v4-pro:cloud`.
+- Codex provider: direct Ollama Cloud OpenAI-compatible endpoint at `https://ollama.com/v1` with `OLLAMA_API_KEY`, `pending-runtime`.
+- Context window: 1M, `source-verified`.
+- Input modalities: text, `source-verified`.
+- Tool/function calling: Ollama tags the model with `tools`, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: Ollama tags the model with `thinking`, `source-verified`, `pending-runtime` for Codex reasoning levels.
+- Cloud: Ollama tags the model with `cloud`, `source-verified`.
+- Codex web search: enabled to match the `gpt-5.2` baseline, `pending-runtime`.
+- Notes: Frontier Mixture-of-Experts model with 1.6T total parameters and 49B activated.
+
+## DeepSeek V4 Flash
+
+- Source: `https://ollama.com/library/deepseek-v4-flash`.
+- Provider model id: `deepseek-v4-flash:cloud`.
+- Codex provider: direct Ollama Cloud OpenAI-compatible endpoint at `https://ollama.com/v1` with `OLLAMA_API_KEY`, `pending-runtime`.
+- Context window: 1M, `source-verified`.
+- Input modalities: text, `source-verified`.
+- Tool/function calling: Ollama tags the model with `tools`, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: Ollama tags the model with `thinking`, `source-verified`, `pending-runtime` for Codex reasoning levels.
+- Cloud: Ollama tags the model with `cloud`, `source-verified`.
+- Codex web search: enabled to match the `gpt-5.2` baseline, `pending-runtime`.
+- Notes: Preview of the DeepSeek-V4 series with 284B total parameters and 13B activated.
 
 ## GLM 5.1
 
