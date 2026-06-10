@@ -227,18 +227,11 @@ Authentication:
   export NVIDIA_API_KEY="..."
 
 Profiles:
-  codex --profile gpt-5.4
-  codex --profile gpt-5.3-codex
-  codex --profile gpt-5.2
-  codex --profile deepseek-v4-pro
-  codex --profile deepseek-v4-flash
-  codex --profile ollama-cloud-glm-5.1
-  codex --profile ollama-cloud-glm-5
-  codex --profile ollama-cloud-minimax-m2.7
-  codex --profile ollama-cloud-minimax-m2.5
-  codex --profile ollama-cloud-kimi-k2.6
-  codex --profile ollama-cloud-kimi-k2.5
-  codex --profile ollama-cloud-qwen3-coder-next
-  codex --profile nvidia-glm-4.7
-
 POSTPATCH
+
+shopt -s nullglob
+for profile_file in "$ROOT_DIR"/profiles/*.config.toml; do
+  profile_name="$(basename "$profile_file" .config.toml)"
+  echo "  codex --profile $profile_name"
+done | sort
+shopt -u nullglob
