@@ -18,6 +18,9 @@ Capability status values:
 | `deepseek-v4-flash:cloud` | `deepseek-v4-flash:cloud` | Ollama | 1M | Text | Yes | Yes | Yes |
 | `glm-5.1` | `glm-5.1` | Z.AI | 200K | Text | Yes | Yes | No |
 | `glm-4.7` | `glm-4.7` | Z.AI | 200K | Text | Yes | Yes | No |
+| `generalcompute-minimax-m2.7` | `minimax-m2.7` | General Compute | 160K | Text | Yes | No | No |
+| `generalcompute-deepseek-v3.2` | `deepseek-v3.2` | General Compute | 32K | Text | Yes | Yes | No |
+| `generalcompute-deepseek-v3.1` | `deepseek-v3.1` | General Compute | 128K | Text | Yes | Yes | No |
 | `glm-5.1:cloud` | `glm-5.1:cloud` | Ollama | 198K | Text | Yes | Yes | Yes |
 | `glm-5:cloud` | `glm-5:cloud` | Ollama | 198K | Text | Yes | Yes | Yes |
 | `minimax-m2.7:cloud` | `minimax-m2.7:cloud` | Ollama | 200K | Text | Yes | Yes | Yes |
@@ -143,6 +146,51 @@ Capability status values:
 - Cloud: Ollama tags the model with `cloud`, `source-verified`.
 - Codex web search: enabled to match the `gpt-5.2` baseline, `pending-runtime`.
 - Notes: Configure as text-only until image support is documented and runtime verified.
+
+## MiniMax M2.7 (General Compute via Moon Bridge)
+
+- Source: `https://docs.generalcompute.com/models`, `https://docs.generalcompute.com/features`, and `https://docs.generalcompute.com/api-keys`.
+- Codex slug: `generalcompute-minimax-m2.7`.
+- Provider model id: `minimax-m2.7`.
+- Codex provider: General Compute via Moon Bridge at `http://127.0.0.1:38440/v1`, `pending-runtime`.
+- Upstream provider endpoint: `https://api.generalcompute.com/v1` with `GENERALCOMPUTE_API_KEY`, configured privately in Moon Bridge.
+- Context window: 160K, `source-verified`.
+- Input modalities: text, `source-verified`.
+- Tool/function calling: supported by General Compute's OpenAI-compatible surface and routed through Moon Bridge, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: not configured; General Compute documents this as the best general-purpose model, not a reasoning model, `source-verified`, `pending-runtime`.
+- Cloud: no from Codex's perspective; Codex talks to local Moon Bridge, `source-verified`.
+- Codex web search: enabled to match the `gpt-5.5` baseline, `pending-runtime`.
+- Notes: Requires Moon Bridge running locally. General Compute hosts the upstream inference service in `us-west-2`.
+
+## DeepSeek V3.2 (General Compute via Moon Bridge)
+
+- Source: `https://docs.generalcompute.com/models`, `https://docs.generalcompute.com/features`, and `https://docs.generalcompute.com/api-keys`.
+- Codex slug: `generalcompute-deepseek-v3.2`.
+- Provider model id: `deepseek-v3.2`.
+- Codex provider: General Compute via Moon Bridge at `http://127.0.0.1:38440/v1`, `pending-runtime`.
+- Upstream provider endpoint: `https://api.generalcompute.com/v1` with `GENERALCOMPUTE_API_KEY`, configured privately in Moon Bridge.
+- Context window: 32K, `source-verified`.
+- Input modalities: text, `source-verified`.
+- Tool/function calling: supported by General Compute's OpenAI-compatible surface and routed through Moon Bridge, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: General Compute marks this as a reasoning model, `source-verified`, `pending-runtime` for Codex reasoning levels.
+- Cloud: no from Codex's perspective; Codex talks to local Moon Bridge, `source-verified`.
+- Codex web search: enabled to match the `gpt-5.5` baseline, `pending-runtime`.
+- Notes: Requires Moon Bridge running locally.
+
+## DeepSeek V3.1 (General Compute via Moon Bridge)
+
+- Source: `https://docs.generalcompute.com/models`, `https://docs.generalcompute.com/features`, and `https://docs.generalcompute.com/api-keys`.
+- Codex slug: `generalcompute-deepseek-v3.1`.
+- Provider model id: `deepseek-v3.1`.
+- Codex provider: General Compute via Moon Bridge at `http://127.0.0.1:38440/v1`, `pending-runtime`.
+- Upstream provider endpoint: `https://api.generalcompute.com/v1` with `GENERALCOMPUTE_API_KEY`, configured privately in Moon Bridge.
+- Context window: 128K, `source-verified`.
+- Input modalities: text, `source-verified`.
+- Tool/function calling: supported by General Compute's OpenAI-compatible surface and routed through Moon Bridge, `source-verified`, `pending-runtime` for Codex.
+- Thinking/reasoning: General Compute marks this as a reasoning model, `source-verified`, `pending-runtime` for Codex reasoning levels.
+- Cloud: no from Codex's perspective; Codex talks to local Moon Bridge, `source-verified`.
+- Codex web search: enabled to match the `gpt-5.5` baseline, `pending-runtime`.
+- Notes: Requires Moon Bridge running locally.
 
 ## MiniMax M2.7
 

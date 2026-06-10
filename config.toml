@@ -9,6 +9,11 @@ name = "Moon Bridge"
 base_url = "http://127.0.0.1:38440/v1"
 wire_api = "responses"
 
+[model_providers.generalcompute]
+name = "General Compute via Moon Bridge"
+base_url = "http://127.0.0.1:38440/v1"
+wire_api = "responses"
+
 [model_providers.ollama-cloud]
 name = "Ollama Cloud"
 base_url = "https://ollama.com/v1"

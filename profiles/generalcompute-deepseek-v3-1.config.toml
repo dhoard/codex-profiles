@@ -1,0 +1,2 @@
+model = "generalcompute-deepseek-v3.1"
+model_provider = "generalcompute"
