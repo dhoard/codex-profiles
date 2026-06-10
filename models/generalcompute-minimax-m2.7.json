@@ -1,0 +1,41 @@
+{
+  "slug": "generalcompute-minimax-m2.7",
+  "display_name": "MiniMax M2.7 (General Compute)",
+  "description": "MiniMax M2.7 via General Compute through Moon Bridge.",
+  "default_reasoning_level": "low",
+  "supported_reasoning_levels": [
+    {
+      "effort": "low",
+      "description": "Fast general-purpose responses"
+    }
+  ],
+  "shell_type": "shell_command",
+  "visibility": "list",
+  "supported_in_api": true,
+  "priority": 22,
+  "additional_speed_tiers": [],
+  "availability_nux": null,
+  "upgrade": null,
+  "base_instructions": "You are MiniMax M2.7 (General Compute) running in the Codex CLI through General Compute via Moon Bridge, a terminal-based coding assistant. Codex CLI is an open source project led by OpenAI. You are expected to be precise, safe, and helpful.",
+  "model_messages": null,
+  "supports_reasoning_summaries": false,
+  "default_reasoning_summary": "none",
+  "support_verbosity": true,
+  "default_verbosity": "low",
+  "apply_patch_tool_type": "freeform",
+  "web_search_tool_type": "text",
+  "truncation_policy": {
+    "mode": "bytes",
+    "limit": 10000
+  },
+  "supports_parallel_tool_calls": true,
+  "supports_image_detail_original": false,
+  "context_window": 160000,
+  "max_context_window": 160000,
+  "effective_context_window_percent": 95,
+  "experimental_supported_tools": [],
+  "input_modalities": [
+    "text"
+  ],
+  "supports_search_tool": true
+}

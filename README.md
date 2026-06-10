@@ -1,6 +1,6 @@
 # Codex Configuration
 
-This repository builds a portable Codex CLI home directory for OpenAI GPT-5.5, DeepSeek, Z.ai coding plan, and selected Ollama Cloud coding models.
+This repository builds a portable Codex CLI home directory for OpenAI GPT-5.5, DeepSeek, Z.ai coding plan, General Compute, and selected Ollama Cloud coding models.
 
 **Requires Codex CLI 0.134.0 or later** (profiles use the `<name>.config.toml` format introduced in 0.134.0).
 
@@ -13,6 +13,9 @@ Configured profiles:
 - `ollama-cloud-deepseek-v4-flash`
 - `zai-coding-glm-5-1`
 - `zai-coding-glm-4-7`
+- `generalcompute-minimax-m2-7`
+- `generalcompute-deepseek-v3-2`
+- `generalcompute-deepseek-v3-1`
 - `ollama-cloud-glm-5-1`
 - `ollama-cloud-glm-5`
 - `ollama-cloud-minimax-m2-7`
@@ -61,6 +64,20 @@ codex --profile zai-coding-glm-5-1
 codex --profile zai-coding-glm-4-7
 ```
 
+### General Compute
+
+General Compute models require [Moon Bridge](https://github.com/ZhiYi-R/moon-bridge) running locally. General Compute provides an OpenAI-compatible Chat Completions API, while Codex uses the Responses API exclusively; Moon Bridge translates between them.
+
+1. Install and start Moon Bridge (default: `http://127.0.0.1:38440`)
+2. Configure Moon Bridge with a General Compute provider using `https://api.generalcompute.com/v1`, your General Compute API key, and routes for `generalcompute-minimax-m2.7`, `generalcompute-deepseek-v3.2`, and `generalcompute-deepseek-v3.1`. See [docs/moon-bridge-generalcompute.md](docs/moon-bridge-generalcompute.md).
+3. Run:
+
+```bash
+codex --profile generalcompute-minimax-m2-7
+codex --profile generalcompute-deepseek-v3-2
+codex --profile generalcompute-deepseek-v3-1
+```
+
 ### Ollama Cloud
 
 For Ollama Cloud models, create an API key from ollama.com and set:
@@ -81,8 +98,9 @@ Codex CLI uses the **Responses API** (`/v1/responses`) exclusively. The older Ch
 | Ollama Cloud | Responses (v0.13.3+) | Yes | No |
 | DeepSeek | Chat Completions only | **No** | Yes — use [Moon Bridge](https://github.com/ZhiYi-R/moon-bridge) |
 | Z.AI | Chat Completions only | **No** | Yes — use [Moon Bridge](https://github.com/ZhiYi-R/moon-bridge) |
+| General Compute | Chat Completions | **No** | Yes — use [Moon Bridge](https://github.com/ZhiYi-R/moon-bridge) |
 
-Moon Bridge is a Go-based proxy that translates Codex Responses API calls into upstream provider APIs. For DeepSeek plus Z.AI routing, see [docs/moon-bridge-multi-provider.md](docs/moon-bridge-multi-provider.md).
+Moon Bridge is a Go-based proxy that translates Codex Responses API calls into upstream provider APIs. For DeepSeek plus Z.AI routing, see [docs/moon-bridge-multi-provider.md](docs/moon-bridge-multi-provider.md). For General Compute routing, see [docs/moon-bridge-generalcompute.md](docs/moon-bridge-generalcompute.md).
 
 ## Validate
 
@@ -128,6 +146,9 @@ codex --profile ollama-cloud-deepseek-v4-pro
 codex --profile ollama-cloud-deepseek-v4-flash
 codex --profile zai-coding-glm-5-1
 codex --profile zai-coding-glm-4-7
+codex --profile generalcompute-minimax-m2-7
+codex --profile generalcompute-deepseek-v3-2
+codex --profile generalcompute-deepseek-v3-1
 codex --profile ollama-cloud-glm-5-1
 codex --profile ollama-cloud-glm-5
 codex --profile ollama-cloud-minimax-m2-7
